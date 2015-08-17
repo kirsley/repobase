@@ -13,6 +13,9 @@ wp-content/uploads
 wp-content/wp-cache-config.php
 assets/*
 wp-content/w3tc-config/
+license.txt
+readme.html
+licencia.txt
 
 ### OSX ###
 .DS_Store
