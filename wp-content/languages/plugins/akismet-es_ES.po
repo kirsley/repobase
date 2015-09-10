@@ -2,13 +2,26 @@
 # This file is distributed under the same license as the Development (trunk) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-07-02 16:59:01+0000\n"
+"PO-Revision-Date: 2015-08-19 11:14:14+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: GlotPress/1.0-alpha-1100\n"
 "Project-Id-Version: Development (trunk)\n"
+
+#: class.akismet-admin.php:885
+msgid "Akismet has saved you %d hours!"
+msgstr "¡Akismet te ha ahorrado %d horas!"
+
+#: class.akismet-admin.php:883
+msgid "Akismet has saved you %s days!"
+msgstr "¡Akismet te ha ahorrado %s días! "
+
+#: class.akismet-admin.php:132 class.akismet-admin.php:170
+#: class.akismet-admin.php:183
+msgid "Akismet filters out spam, so you can focus on more important things."
+msgstr "Akismet filtra el spam para que puedas centrarte en cosas más importantes."
 
 #: views/notice.php:94
 msgid "Your API key is no longer valid. Please enter a new key or contact support@akismet.com."
