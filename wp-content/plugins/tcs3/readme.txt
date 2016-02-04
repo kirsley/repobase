@@ -2,8 +2,8 @@
 Contributors: tcmccarthy1
 Tags: Amazon, S3, upload, media, multisite, aws
 Requires at least: 3.5
-Tested up to: 4.2.2
-Stable tag: 1.5
+Tested up to: 4.4
+Stable tag: 1.7.2
 License: GPL, version 2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,7 +60,17 @@ This plugin is installed just like any other. Simply upload the zip file you can
 
 == Changelog ==
 
-= 1.5 = 
+= 1.7.2 = 
+* Grunts the plugin and object orients the JS.
+
+= 1.7.1 = 
+* Corrects some bugs that are resulting in notices
+
+= 1.7 = 
+* Users have expressed use cases where the automated S3 push is needed but they wish to not modify the attachment URL. Adds this option
+* WP 4.4 added functions for defining the srcset polyfill. This functionality is now supported by tcS3.
+
+= 1.6 = 
 * Adds fallback option where users can opt to use the tcS3_media endpoint OR link directly to their S3 bucket
 * Increases hook priority to 20 to allow for various image editing plugins to have their work pushed to S3
 * Adds support for the use of environment variables to store AWS keys and secrets

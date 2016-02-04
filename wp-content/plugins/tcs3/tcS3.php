@@ -3,7 +3,7 @@
  * Plugin Name: TCS3 -- Send uploads directly to S3
  * Plugin URI: http://tcm.io
  * Description: Allows site admins to push uploads to S3
- * Version: 1.5
+ * Version: 1.7.2
  * Author: TC McCarthy
  * Author URI: http://tcm.io
  * License: GPL2
@@ -88,7 +88,9 @@ class tcS3 {
 			//add the rewrite rule for the CDN lookup script and update the frontend to redirect to it
 			add_action('init', array($this, 'add_images_rewrite'), 10, 0);
 			add_action('template_redirect', array($this, 'load_image'));
-			add_filter('wp_get_attachment_url', array($this, 'build_attachment_url'));
+			add_filter('wp_get_attachment_url', array($this, 'build_attachment_url'), 20, 1);
+			add_filter('wp_get_attachment_image_src', array($this, 'get_attachment_image_src'), 20, 1);
+			add_filter('wp_calculate_image_srcset', array($this, 'calculate_image_srcset'), 20, 1);
 
 			//if super admin has flagged marking all uploads as uploaded and it has been done on this site yet, do it.
 			if (get_site_option("tcS3_mark_all_attachments") == 1 && (get_option("tcS3_marked_all_attached") != 1 || get_option("tcS3_marked_all_attached") === FALSE)) {
@@ -122,6 +124,18 @@ class tcS3 {
 		  setTimeout(\"\$j('#my-plugin-alert').fadeIn('slow');clearTimeout();\",1000);
 		});
 		</script>";
+	}
+
+	public function get_attachment_image_src($image){
+		$image["src"] = $this->build_attachment_url($image[0]);
+		return $image;
+	}
+
+	public function calculate_image_srcset($sources){
+		foreach($sources as $key => $source){
+		 	$sources[$key]['url'] = $this->build_attachment_url($source['url']);
+		}
+		return $sources;
 	}
 
 	public function build_aws_config() {
@@ -539,6 +553,10 @@ class tcS3 {
 	}
 
 	public function build_attachment_url($url) {
+		if(isset($this->options["tcS3_use_url"]) && $this->options["tcS3_use_url"] == 0){
+			return $url;
+		}
+
 		preg_match("/\/([0-9]+\/[0-9]+\/[^\/]+)$/", $url, $matches);
 		$protocol = (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] != "") ? "https" : "http";
 		if($this->options["tcS3_fallback"] == 1){
@@ -600,9 +618,9 @@ class tcS3 {
 
 		wp_enqueue_script("jquery");
 		wp_enqueue_script('jquery-ui-progressbar');  // the progress bar
-		wp_enqueue_script("tcS3", $this->pluginDir . "tcs3/js/tcS3.js");
+		wp_enqueue_script("tcS3", $this->pluginDir . "tcs3/js/tcS3.min.js");
 		wp_enqueue_style("jquery-ui", "//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css");
-		wp_enqueue_style("tcS3", $this->pluginDir . "tcs3/css/tcS3.css");
+		wp_enqueue_style("tcS3", $this->pluginDir . "tcs3/css/tcS3.min.css");
 	}
 
 	public function create_admin_page() {
@@ -667,6 +685,10 @@ class tcS3 {
 
 		add_settings_field(
 			's3_bucket_path', 'S3 Bucket Path', array($this, 's3_bucket_path_callback'), 'tcS3-setting-admin', 'tcS3-settings'
+			);
+
+		add_settings_field(
+			's3_use_url', 'Override default WP URL', array($this, 's3_use_url_callback'), 'tcS3-setting-admin', 'tcS3-settings'
 			);
 
 		add_settings_field(
@@ -910,6 +932,20 @@ class tcS3 {
 	public function tcS3_fallback_callback() {
 		$optionKey = 'tcS3_fallback';
 		$helperText = 'If selected tcS3 will use a tcS3_media URL to allow the plugin to check for files locally if they\'re not available on S3. This option slows down load time';
+
+		printf(
+			'<input type="radio" id="%s" name="tcS3_option[%s]" value="1" %s /> Yes 
+			<br /><input type="radio" id="%s" name="tcS3_option[%s]" value="0" %s /> No 
+			<div><small>%s</small></div>', $optionKey, $optionKey, ($this->options[$optionKey] == 1) ? "checked" : "", $optionKey, $optionKey, ($this->options[$optionKey] == 0) ? "checked" : "", $helperText
+			);
+	}
+
+	public function s3_use_url_callback() {
+		$optionKey = 'tcS3_use_url';
+		$helperText = 'By default tcS3 overrides WP default URLs. You can disable this if you so desire.';
+		if(!isset($this->options[$optionKey])){
+			$this->options[$optionKey] = 1;
+		}
 
 		printf(
 			'<input type="radio" id="%s" name="tcS3_option[%s]" value="1" %s /> Yes 
