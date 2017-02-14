@@ -2,8 +2,8 @@
 Contributors: tcmccarthy1
 Tags: Amazon, S3, upload, media, multisite, aws
 Requires at least: 3.5
-Tested up to: 4.4
-Stable tag: 1.7.2
+Tested up to: 4.7.2
+Stable tag: 1.9
 License: GPL, version 2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,13 +18,13 @@ Current capabilities
 
 
  Upload directly to S3 (with the option to delete from your local instance immediately after a successful upload)
-	
+
  Push all prexisting images on a single wordpress site to S3
-	
+
  Push or repush a single image to S3 right from within the media library
-	
+
  Delete media from S3 when it's deleted from your library
-	
+
  Adds a redundancy layer where it lightly but intelligently figures out if your image is available on S3 and falls back to your webserver's copy of it if it isn't.
 
 
@@ -37,11 +37,11 @@ Advanced features
 The plugin's use of the AWS SDK for PHP allows for a more flexible configuration. Out of the box the plugin is set up to do two things, and if you never change them you'll probably be fine.
 
 
-	
+
  Set cache headers on your image so repeat visitors load the image faster and don't cost you a GET against S3
-	
+
  Performs multithreaded uploads on files larger than 5MB -- larger files can take longer for your webserver to send to S3... those can really slow down your site! So, the plugin will split your files up into chunks no smaller than 5MB and send them to S3 that way, seamlessly, without your having to ask.
-	
+
  Optional Memcache (only displays when your server supports it) or file system (supported everywhere) caching of header lookup results to save on PHP resource usage. You can set the TTL of the header lookup cache AND the cache headers on S3 right from within the dashboard
 
 
@@ -59,23 +59,25 @@ While S3 is relatively inexpensive (very inexpensive the more you use it), it's 
 This plugin is installed just like any other. Simply upload the zip file you can download from GitHub and upload it using the WordPress dashboard or FTP. You can also install it right from the Wordpress Plugin Repository!
 
 == Changelog ==
+= 1.9 =
+* Upgrades to the latest AWS PHP SDK
 
-= 1.7.2 = 
+= 1.7.2 =
 * Grunts the plugin and object orients the JS.
 
-= 1.7.1 = 
+= 1.7.1 =
 * Corrects some bugs that are resulting in notices
 
-= 1.7 = 
+= 1.7 =
 * Users have expressed use cases where the automated S3 push is needed but they wish to not modify the attachment URL. Adds this option
 * WP 4.4 added functions for defining the srcset polyfill. This functionality is now supported by tcS3.
 
-= 1.6 = 
+= 1.6 =
 * Adds fallback option where users can opt to use the tcS3_media endpoint OR link directly to their S3 bucket
 * Increases hook priority to 20 to allow for various image editing plugins to have their work pushed to S3
 * Adds support for the use of environment variables to store AWS keys and secrets
 
-= 1.1 = 
+= 1.1 =
 * Bug fix where some environments don't show menu options for plugin when plugin installed from the Wordpress repository
 * Bug fix where some environments choke on upload of non-images
 

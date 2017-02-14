@@ -8,14 +8,14 @@ td.s3 img.active {
 }
 /* line 9, ../assets/scss/_base.scss */
 td.s3 img.notuploaded {
-  opacity: .5;
+  opacity: 0.5;
 }
 
-/* line 17, ../assets/scss/_base.scss */
+/* line 16, ../assets/scss/_base.scss */
 .migration .progressbar {
   position: relative;
 }
-/* line 20, ../assets/scss/_base.scss */
+/* line 19, ../assets/scss/_base.scss */
 .migration .progressbar .progressbar-label {
   position: absolute;
   left: 50%;
