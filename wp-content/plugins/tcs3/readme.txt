@@ -3,7 +3,7 @@ Contributors: tcmccarthy1
 Tags: Amazon, S3, upload, media, multisite, aws
 Requires at least: 3.5
 Tested up to: 4.7.2
-Stable tag: 1.9
+Stable tag: 1.9.1
 License: GPL, version 2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -59,6 +59,9 @@ While S3 is relatively inexpensive (very inexpensive the more you use it), it's 
 This plugin is installed just like any other. Simply upload the zip file you can download from GitHub and upload it using the WordPress dashboard or FTP. You can also install it right from the Wordpress Plugin Repository!
 
 == Changelog ==
+= 1.9.1 =
+* Reverts accidentally released ads feature. Sorry for the mishap on this -- the selectors were broad and still a work in progress (ads showing on non-plugin pages). Elements of the wrong branch got introduced into this release inadvertently.
+
 = 1.9 =
 * Upgrades to the latest AWS PHP SDK
 

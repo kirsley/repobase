@@ -17,7 +17,7 @@ var tcS3_admin,
 
 		onReady: function () {
 			this.binds();
-			this.loadAds();
+			//this.loadAds();
 		},
 
 		binds: function () {
