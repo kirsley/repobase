@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Yoast SEO - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-07-05 09:32:22+0000\n"
+"PO-Revision-Date: 2017-07-13 14:39:36+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,131 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: es\n"
 "Project-Id-Version: Plugins - Yoast SEO - Stable (latest release)\n"
+
+#: admin/views/tabs/dashboard/features.php:54
+msgid "This feature helps you improve the internal link structure of your site. If you want to know more about the why and how of internal linking, check out the %1$sarticle about internal linking on Yoast.com%2$s."
+msgstr "Esta funcionalidad te ayuda a mejorar la estructura de enlaces internos de tu sitio. Si quieres saber más sobre el porqué y el cómo del enlazado interno revisa nuestro %1$sartículo sobre enlazado interno en Yoast.com%2$s."
+
+#. translators: %1$s: Yoast SEO. %2$s: Version number of Yoast SEO. %3$s: link
+#. to knowledge base article about solving table issue. %4$s: is anchor
+#. closing.
+#: admin/links/class-link-table-accessible-notifier.php:36
+msgid ""
+"The <strong>Text link counter</strong> feature (introduced in %1$s %2$s) is currently disabled. For this feature to work %1$s needs to create a table in your database. We were unable to create this table automatically.\n"
+"\t\t\t\t\tPlease read the following %3$sknowledge base article%4$s to find out how to resolve this problem."
+msgstr ""
+"La utilidad de <strong>contador de enlaces a textos</strong> (introducida en %1$s %2$s) está en este momento desactivada. Para que funcione esta utilidad %1$s tiene que crear una tabla en tu base de datos. No hemos podido crear esta tabla automáticamente.\n"
+"\t\t\t\t\tPor favor, lee el siguiente %3$sartículo de la base de conocimiento%4$s para aprender a resolver este problema."
+
+#: admin/links/class-link-reindex-dashboard.php:164
+msgid "Good job! All the links in your texts have been counted."
+msgstr "¡Buen trabajo! Todos los enlaces en tus textos se han contabilizado."
+
+#: admin/links/class-link-reindex-dashboard.php:141
+msgid "Calculation completed."
+msgstr "Cálculo completado."
+
+#: admin/links/class-link-reindex-dashboard.php:140
+msgid "Calculation in progress..."
+msgstr "Cálculo en progreso…"
+
+#: admin/links/class-link-reindex-dashboard.php:117
+msgid "Stop counting"
+msgstr "Parar el conteo"
+
+#: admin/links/class-link-reindex-dashboard.php:110
+msgid "Counting links in your texts"
+msgstr "Contando enlaces en tus textos"
+
+#. translators: 1: expands to a <span> containing the number of items
+#. recalculated. 2: expands to a <strong> containing the total number of items.
+#: admin/links/class-link-reindex-dashboard.php:100
+msgid "Text %1$s of %2$s processed."
+msgstr "Texto %1$s de %2$s procesado."
+
+#: admin/links/class-link-reindex-dashboard.php:94
+msgid "All your texts are already counted, there is no need to count them again."
+msgstr "Se han contado todos tus textos, no hay necesidad de contarlos de nuevo."
+
+#: admin/links/class-link-reindex-dashboard.php:69
+msgid "Count links in your texts"
+msgstr "Cuenta los enlaces en tus textos"
+
+#. translators: 1: link to yoast.com post about internal linking suggestion. 4:
+#. is Yoast.com 3: is anchor closing.
+#: admin/links/class-link-reindex-dashboard.php:52
+msgid "The links in all your public texts need to be counted. This will provide insights of which texts need more links to them. If you want to know more about the why and how of internal linking, check out %1$sthe article about internal linking on %2$s%3$s."
+msgstr "Es necesario contabilizar todos los enlaces de tus textos públicos. Esto ofrecerá ideas de qué textos necesitan más enlaces. Si quieres saber más sobre por qué y cómo enlazar internamente echa un vistazo a %1$seste artículo sobre enlaces internos en %2$s%3$s."
+
+#: admin/links/class-link-reindex-dashboard.php:49
+#: admin/views/tabs/dashboard/features.php:51
+msgid "Text link counter"
+msgstr "Contador de enlaces en textos"
+
+#. translators: 1: link to yoast.com post about internal linking suggestion. 2:
+#. is anchor closing. 3: button to the recalculation option. 4: closing button
+#: admin/links/class-link-notifier.php:89
+msgid ""
+"To make sure all the links in your texts are counted, we need to analyze all your texts.\n"
+"\t\t\t\t\tAll you have to do is press the following button and we'll go through all your texts for you.\n"
+"\t\t\t\t\t\n"
+"\t\t\t\t\t%3$sCount links%4$s\n"
+"\t\t\t\t\t\n"
+"\t\t\t\t\tThe Text link counter feature provides insights in how many links are found in your text and how many links are referring to your text. This is very helpful when you are improving your %1$sinternal linking%2$s."
+msgstr ""
+"Para asegurar que se cuenten todos los enlaces en tus textos tenemos que analizar todos tus textos.\n"
+"\t\t\t\t\tLo único que tienes que hacer es pulsar el siguiente botón y revisaremos todos tus textos por ti.\n"
+"\t\t\t\t\t\n"
+"\t\t\t\t\t%3$sContar enlaces%4$s\n"
+"\t\t\t\t\t\n"
+"\t\t\t\t\tLa utilidad de enlaces a textos ofrece pistas sobre cuantos enlaces hay en tu texto y cuantos enlaces apuntan a tu texto. Esto es muy útil cuando estás mejorando tus %1$senlazado interno%2$s."
+
+#. translators: %1$s: Yoast SEO. %2$s: Version number of Yoast SEO. %3$s: PHP
+#. version %4$s: The current PHP versione. %5$s link to knowledge base article
+#. about solving PHP issue. %6$s: is anchor closing.
+#: admin/links/class-link-compatibility-notifier.php:36
+msgid ""
+"The <strong>Text link counter</strong> feature (introduced in %1$s %2$s) is currently disabled. For this feature to work %1$s requires at least PHP version %3$s. We have detected PHP version %4$s on this website.\n"
+"\t\t\t\t\tPlease read the following %5$sknowledge base article%6$s to find out how to resolve this problem."
+msgstr ""
+"La utilidad <strong>contador de enlaces a textos</strong>  (introducida en %1$s %2$s) está en este momento desactivada. Para que funcione esta utilidad %1$s requiere al menos la versión de PHP %3$s. Hemos detectado la versión de PHP %4$s en esta web.\n"
+"\t\t\t\t\tPor favor, lee el siguiente %5$sartículo de la base de conocimiento%6$s para aprender a resolver este problema."
+
+#: admin/links/class-link-columns.php:159
+msgid "# internal links to"
+msgstr "# enlaces internos a"
+
+#: admin/links/class-link-columns.php:159
+msgid "Number of internal links linking to this post. See \"Yoast Columns\" text in the help tab for more info."
+msgstr "Número de enlaces internos que enlazan a esta entrada. Revisa el texto en las \"Columnas Yoast\" de la pestaña de ayuda para más información."
+
+#: admin/links/class-link-columns.php:156
+msgid "# links in post"
+msgstr "# enlaces en la entrada"
+
+#: admin/links/class-link-columns.php:156
+msgid "Number of internal links in this post. See \"Yoast Columns\" text in the help tab for more info."
+msgstr "Número de enlaces internos en esta entrada. Revisa el texto en las \"Columnas Yoast\" de la pestaña de ayuda para más información. "
+
+#. translators: %1$s: Yoast SEO, %2$s: Link to article about content analysis,
+#. %3$s: Anchor closing, %4$s: Link to article about text links, %5$s: Emphasis
+#. open tag, %6$s: Emphasis close tag
+#: admin/class-yoast-columns.php:30
+msgid "%1$s adds several columns to this page. We've written an article about %2$show to use the SEO score and Readability score%3$s. The links columns show the number of articles on this site linking %5$sto%6$s this article and the number of URLs linked %5$sfrom%6$s this article. Learn more about %4$show to use these features to improve your internal linking%3$s, which greatly enhances your SEO."
+msgstr "%1$s añade varias columnas a esta página. Hemos escrito un artículo sobre %2$scómo usar la puntuación SEO y de legibilidad%3$s. Las columnas de enlaces muestran el número de artículos de este sitio enlazando %5$sa%6$s este artículo y el número de URLs enlazadas %5$sdesde%6$s este artículo. Aprende más sobre %4$scómo usar estas utilidades para mejorar tu enlazado interno%3$s, lo que mejora enormemente tu SEO."
+
+#. translators: %s expands to Yoast
+#: admin/class-yoast-columns.php:26
+msgid "%s Columns"
+msgstr "Columnas %s"
+
+#: admin/class-meta-columns.php:65
+msgid "Readability score"
+msgstr "Puntuación de legibilidad"
+
+#: admin/banner/class-admin-banner-sidebar.php:372
+msgid "Take the online Structured Data Training course and learn how to create rich snippets!"
+msgstr "¡Haz el curso online de entrenamiento en datos estructurados y aprende cómo crear snippets enriquecidos!"
 
 #: languages/yoast-seo-js.php:208
 msgid "The focus keyword appears only in %2$d (out of %1$d) subheadings in your copy. Try to use it in at least one more subheading."
@@ -751,6 +876,18 @@ msgstr "El texto no contiene ningún subtítulo. Añade al menos uno."
 msgid "None of the paragraphs are too long, which is great."
 msgstr "Ninguno de tus párrafos es demasiado largo, lo cual es genial."
 
+#: languages/yoast-seo-js.php:202
+msgid "The SEO title is wider than the viewable limit."
+msgstr "El título SEO de la página es mayor que el límite visible."
+
+#: languages/yoast-seo-js.php:199
+msgid "The SEO title has a nice length."
+msgstr "El título SEO de la página tiene una longitud adecuada."
+
+#: languages/yoast-seo-js.php:196
+msgid "The SEO title is too short. Use the space to add keyword variations or create compelling call-to-action copy."
+msgstr "El título SEO de la página es demasiado corto. Utiliza el espacio para añadir variaciones de la palabra clave o escribe una llamada a la acción irresistible."
+
 #: languages/yoast-seo-js.php:179
 msgid "The length of the meta description is sufficient."
 msgstr "La longitud de la meta description es insuficiente."
@@ -1034,7 +1171,7 @@ msgstr "Dicho sea de paso ¿sabías que también tenemos un %1$s plugin Premium%
 msgid "(no title)"
 msgstr "(sin título)"
 
-#: admin/views/tabs/dashboard/features.php:63
+#: admin/views/tabs/dashboard/features.php:72
 msgid "%1$s comes with a lot of features. You can enable / disable some of them below."
 msgstr "%1$s viene con un montón de características. Puedes activar / desactivar algunas a continuación."
 
@@ -1064,7 +1201,7 @@ msgstr "Los ajustes avanzados incluyen ajustes globales para tus títulos y meta
 msgid "Advanced settings pages"
 msgstr "Páginas de ajustes avanzados"
 
-#: admin/pages/dashboard.php:60 admin/views/tabs/dashboard/features.php:60
+#: admin/pages/dashboard.php:60 admin/views/tabs/dashboard/features.php:69
 msgid "Features"
 msgstr "Características"
 
@@ -1349,7 +1486,7 @@ msgstr "Ver créditos"
 #. translators: %1$s expands to Yoast SEO
 #: admin/views/tabs/dashboard/general.php:40
 msgid "Take a look at the people that create %1$s."
-msgstr "Conoce a las personas que hah creado %1$s."
+msgstr "Conoce a las personas que han creado %1$s."
 
 #: admin/views/about.php:54
 msgid "Team and contributors"
@@ -2143,7 +2280,7 @@ msgstr "La sección avanzada de la meta box %1$s permite no indexar entradas o c
 msgid "Advanced part of the %1$s meta box"
 msgstr "Sección avanzada de la caja meta %1$s"
 
-#: admin/class-yoast-form.php:301 admin/views/tabs/dashboard/features.php:73
+#: admin/class-yoast-form.php:301 admin/views/tabs/dashboard/features.php:82
 #: admin/views/tabs/dashboard/security.php:16
 #: admin/views/tabs/metas/archives.php:27
 #: admin/views/tabs/metas/archives.php:46
@@ -2153,7 +2290,7 @@ msgid "Enabled"
 msgstr "Activado"
 
 #: admin/class-admin.php:703 admin/class-yoast-form.php:301
-#: admin/views/tabs/dashboard/features.php:74
+#: admin/views/tabs/dashboard/features.php:83
 #: admin/views/tabs/dashboard/security.php:16
 #: admin/views/tabs/metas/archives.php:28
 #: admin/views/tabs/metas/archives.php:47
@@ -4311,6 +4448,10 @@ msgstr "El título SEO contiene la palabra clave objetivo pero esta no aparece a
 #: languages/yoast-seo-js.php:272
 msgid "The SEO title contains the focus keyword, at the beginning which is considered to improve rankings."
 msgstr "El título SEO contiene la palabra clave objetivo al comienzo, lo que se considera que mejora las valoraciones."
+
+#: languages/yoast-seo-js.php:205
+msgid "Please create an SEO title."
+msgstr "Por favor crea un título SEO."
 
 #: languages/yoast-seo-js.php:284
 msgid "The slug for this page is a bit long, consider shortening it."
