@@ -62,7 +62,7 @@ class Core {
 	public function init() {
 
 		// Load translations just in case.
-		load_plugin_textdomain( 'wp-mail-smtp', false, wp_mail_smtp()->plugin_path . '/languages' );
+		load_plugin_textdomain( 'wp-mail-smtp', false, plugin_basename( wp_mail_smtp()->plugin_path ) . '/languages' );
 
 		/*
 		 * Constantly check in admin area, that we don't need to upgrade DB.
@@ -223,17 +223,19 @@ class Core {
 		// Store the plugin version activated to reference with upgrades.
 		update_option( 'wp_mail_smtp_version', WPMS_PLUGIN_VER );
 
-		// Create and store inital plugin settings.
-		$options['mail'] = array(
-			'from_email'  => get_option( 'admin_email' ),
-			'from_name'   => get_bloginfo( 'name' ),
-			'mailer'      => 'mail',
-			'return_path' => false,
-			'smtp'        => array(
+		// Create and store initial plugin settings.
+		$options = array(
+			'mail' => array(
+				'from_email'  => get_option( 'admin_email' ),
+				'from_name'   => get_bloginfo( 'name' ),
+				'mailer'      => 'mail',
+				'return_path' => false,
+			),
+			'smtp' => array(
 				'autotls' => true,
 			),
 		);
 
-		Options::init()->set( $options );
+		Options::init()->set( $options, true );
 	}
 }
