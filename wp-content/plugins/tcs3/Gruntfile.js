@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
 	// Project configuration.
 	grunt.initConfig({
@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 
 		uglify: {
 			files: {
-				src: 'js/tcS3.js', // source files mask
+				src: ['js/*.js', '!js/*.min.js'], // source files mask
 				dest: 'js/', // destination folder
 				expand: true, // allow dynamic building
 				flatten: true, // remove all unnecessary nesting
@@ -24,9 +24,34 @@ module.exports = function(grunt) {
 		},
 
 		concat: {
-			dist:{
-				src: ['assets/js/*.js', '!assets/js/app.js'],
-				dest: 'js/tcS3.js',
+			dist: {
+				src: ['assets/js/*.js'],
+				dest: 'js/working/app.es6.js',
+			}
+		},
+
+		babel: {
+			options: {
+				presets: [
+					["env", {
+						"targets": {
+							"browsers": ["last 2 versions", "safari >= 7"]
+						}
+					}]
+				]
+			},
+			dist: {
+				//dest - string: src - array
+				src: ["js/working/app.es6.js"],
+				dest: "js/app.js"
+			}
+		},
+
+		browserify: {
+			dist: {
+				files: {
+					'js/app.js': ['js/working/app.babel.js']
+				}
 			}
 		},
 
@@ -44,25 +69,47 @@ module.exports = function(grunt) {
 
 		watch: {
 			js: {
-				files: 'assets/js/*.js',
-				tasks: ['concat', 'uglify']
+				files: ['assets/js/*.js', 'assets/js/*/*.js', 'Gruntfile.js'],
+				tasks: ['newer:jshint', 'newer:concat', 'babel', 'browserify', 'newer:uglify']
 			},
 
 			css: {
 				files: '**/*.scss',
 				tasks: ['compass', 'cssmin']
 			}
+		},
+
+		jshint: {
+			options: {
+				curly: true,
+				eqnull: true,
+				browser: true,
+				expr: true,
+				globals: {
+					jQuery: true,
+				},
+				sub: true,
+				esversion: 6
+
+			},
+			uses_defaults: ['assets/js/*.js', '!assets/js/__*.js', 'assets/js/*/*.js', '!assets/js/*/__*.js']
+		},
+
+		removelogging: {
+			dist: {
+				src: "js/app.js",
+				dest: "js/app.js",
+			}
 		}
 	});
 
 	// load plugins
-	grunt.loadNpmTasks('grunt-contrib-compass');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-cssmin');
+	// load plugins
+	require('load-grunt-tasks')(grunt, { scope: 'devDependencies' });
 
 	// register at least this one task
-	grunt.registerTask('default', ['concat', 'uglify', 'compass', 'cssmin']);
-	grunt.registerTask('dev', ['concat', 'uglify', 'compass', 'cssmin', 'watch']);
+	// register at least this one task
+	grunt.registerTask('default', ['concat', 'babel', 'removelogging', 'uglify', 'compass', 'cssmin']);
+	grunt.registerTask('dev', ['jshint', 'concat', 'babel', 'uglify', 'compass', 'cssmin', 'watch']);
+	grunt.registerTask('des', ['compass', 'cssmin', 'watch:css']);
 };
