@@ -43,12 +43,12 @@ class tcs3_base
 
         $options = $default;
 
-        //if this is a network site and the plugin is network activated, check for settings
+        //if this is a network site and the plugin is network activated, check for setting
         if ($this->network_activated) {
             $network_options = $this->unserialize(get_site_option("tcS3_options"));
         }
 
-        if (is_array($network_options)) {
+        if (isset($network_options) && is_array($network_options)) {
             $options = array_merge($options, $network_options);
         }
 
